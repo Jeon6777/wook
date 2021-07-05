@@ -10,19 +10,20 @@ app.prepare()
     const server = express();
     
     server.post('/auth', (req,res) => {
-        const actualPage = '/success'
-        console.log(req)
-        const queryParams = { id: req.params.id, pw: req.params.pw}
-        console.log(queryParams)
-        app.render(req, res, actualPage, queryParams)
-    })
+        console.log(req);
+        const actualPage = '/success';
+        // const queryParams = { id: req.params.id, pw: req.params.pw};
+        // console.log(queryParams);
+        // app.render(req, res, actualPage);
+        res.json({success: true})
+    });
     
     server.get('/p/:id', (req,res) => {
         const actualPage = '/post';
-        const queryParams = { title: req.params.id }
+        const queryParams = { title: req.params.id };
         console.log(queryParams);
-        app.render(req, res, actualPage, queryParams)
-    })
+        app.render(req, res, actualPage, queryParams);
+    });
 
     server.get('*', (req, res) => {
         return handle(req, res)
